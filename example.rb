@@ -19,7 +19,5 @@ class B
 end
 
 require_relative 'traceruby'
-Record do
-  a = A.new B.new(12)
-  puts a.doit_a
-end
+a = A.new B.new 12
+Record { a.doit_a }

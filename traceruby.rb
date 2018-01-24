@@ -2,10 +2,12 @@ require 'binding_of_caller'
 require 'pp'
 
 def Record
+  path   = File.expand_path(__FILE__)
   stream = File.open("recorded.json", 'w')
-  tp = nil
+  tp     = nil
   Object.new.instance_eval do
     tp = TracePoint.new :call, :c_call do |tp|
+      next if tp.path == path
       callers = tp.binding.callers
       callers = callers.drop_while { |c| c.receiver != self }
       callers = callers.drop_while { |c| c.receiver == self }
