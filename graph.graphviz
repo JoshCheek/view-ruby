@@ -1,0 +1,12 @@
+digraph App {
+Object -> Class[label="new"];
+Object -> B[label="initialize"];
+Object -> A[label="initialize"];
+Object -> A[label="doit_a"];
+A -> B[label="doit_b"];
+Object -> Kernel[label="puts"];
+Object -> IO[label="puts"];
+Object -> Integer[label="to_s"];
+Object -> IO[label="write"];
+Object -> TracePoint[label="disable"];
+}
